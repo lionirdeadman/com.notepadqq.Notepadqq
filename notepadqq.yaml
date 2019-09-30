@@ -13,10 +13,7 @@ sources:
     url: https://github.com/notepadqq/notepadqq/archive/v1.4.8.tar.gz
     sha256: 13fba9abd84c59de27fbe92f74e2763b57588fcf9c88af10ec67313b0abbc9d0
   - type: patch
-    path: notepadqq-1.4.8-appdata.patch
-  - type: shell
-    commands:
-      - desktop-file-edit --remove-key=OnlyShowIn "support_files/shortcuts/notepadqq.desktop";
+    path: notepadqq-1.4.8-xdg.patch
 post-install:
   - ln -sf "${FLATPAK_DEST}/lib/notepadqq/notepadqq-bin" "${FLATPAK_DEST}/bin/notepadqq";
   - install -p -D -m 0644 *.md -t "${FLATPAK_DEST}/share/doc/notepadqq/";
