@@ -14,9 +14,16 @@ sources:
     sha256: 13fba9abd84c59de27fbe92f74e2763b57588fcf9c88af10ec67313b0abbc9d0
   - type: patch
     path: notepadqq-1.4.8-xdg.patch
+  # Auto-fill paths for node & npm
+  - type: patch
+    path: notepadqq-1.4.8-paths.patch
+  # Disable editing nodejs options in Preferences
+  - type: patch
+    path: notepadqq-1.4.8-preferences.patch
 post-install:
   - ln -sf "${FLATPAK_DEST}/lib/notepadqq/notepadqq-bin" "${FLATPAK_DEST}/bin/notepadqq";
   - install -p -D -m 0644 *.md -t "${FLATPAK_DEST}/share/doc/notepadqq/";
   - install -p -D -m 0644 "COPYING" -t "${FLATPAK_DEST}/share/licenses/notepadqq/";
 modules:
+  - nodejs.yaml
   - fonts.yaml
