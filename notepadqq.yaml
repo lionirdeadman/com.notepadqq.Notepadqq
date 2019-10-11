@@ -36,7 +36,6 @@ sources:
     path: notepadqq-1.4.8-icons-xdg.patch
     use-git: true
 post-install:
-  - ln -sf "${FLATPAK_DEST}/lib/notepadqq/notepadqq-bin" "${FLATPAK_DEST}/bin/notepadqq";
   - install -p -D -m 0644 *.md -t "${FLATPAK_DEST}/share/doc/notepadqq/";
   - install -p -D -m 0644 "COPYING" -t "${FLATPAK_DEST}/share/licenses/notepadqq/";
 modules:
