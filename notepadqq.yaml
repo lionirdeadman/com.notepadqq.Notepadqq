@@ -2,42 +2,30 @@ name: notepadqq
 buildsystem: qmake
 config-opts:
   - QMAKE_STRIP=
-  - INCLUDEPATH+="${FLATPAK_DEST}/include/QtWebKitWidgets"
-  - INCLUDEPATH+="${FLATPAK_DEST}/include/QtWebKit"
+  - DEFINES+=USE_DBUS
   - LRELEASE=lrelease
 build-options:
   env:
     QMAKEPATH: "/app/lib"
 sources:
-  - type: archive
-    url: https://github.com/notepadqq/notepadqq/archive/v1.4.8.tar.gz
-    sha256: 13fba9abd84c59de27fbe92f74e2763b57588fcf9c88af10ec67313b0abbc9d0
-    git-init: true
-  # Fix XDG files
-  - type: patch
-    path: notepadqq-1.4.8-xdg.patch
+  - type: git
+    url: https://github.com/notepadqq/notepadqq.git
+    commit: 857a0369df590effc999a2fe6a6274321eeafaca
   # Auto-fill paths for node & npm
   - type: patch
-    path: notepadqq-1.4.8-paths.patch
+    path: notepadqq-1.9.99-paths.patch
   # Disable editing nodejs options in Preferences
   - type: patch
     path: notepadqq-1.4.8-preferences.patch
-  # New icon theme
-  # https://github.com/notepadqq/notepadqq/commit/75c7ae9c07f455d87331bd676a972fd48d7e2f8d
-  # https://github.com/notepadqq/notepadqq/commit/62100842ca97aa91124c3d1b59f5bc325d0c53e9#diff-c3ab66d3a2ec15b26e2179019f6ee2b4
-  # https://github.com/notepadqq/notepadqq/commit/177d9fe942059947415295340963c02ae51c48ff
-  # https://github.com/notepadqq/notepadqq/pull/774
-  - type: patch
-    path: notepadqq-1.4.8-icons-svg.patch
-    use-git-am: true
   # Improve icon handling
   # https://github.com/notepadqq/notepadqq/pull/908
   - type: patch
-    path: notepadqq-1.4.8-icons-xdg.patch
+    path: notepadqq-1.9.99-icons-xdg.patch
     use-git: true
 post-install:
   - install -p -D -m 0644 *.md -t "${FLATPAK_DEST}/share/doc/notepadqq/";
   - install -p -D -m 0644 "COPYING" -t "${FLATPAK_DEST}/share/licenses/notepadqq/";
 modules:
   - nodejs.yaml
+  - uchardet.yaml
   - fonts.yaml
