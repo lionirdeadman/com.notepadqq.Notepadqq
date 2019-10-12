@@ -53338,7 +53338,7 @@ index eb9197f2a..6d5d9b17d 100644
 +    ui->actionSave_Currently_Recorded_Macro->setIcon(IconProvider::fromTheme("document-save-as", QStringList() << "document-save"));
  }
  
- void MainWindow::createStatusBar()
+ void MainWindow::configureStatusBar()
 diff --git a/src/ui/qextendediconengine.cpp b/src/ui/qextendediconengine.cpp
 new file mode 100644
 index 000000000..1d9039a6c
@@ -53931,7 +53931,7 @@ index 6d5d9b17d..d51c61c02 100644
 +        IconProvider::fromTheme("document-save-as", QStringList() << "document-save"));
  }
  
- void MainWindow::createStatusBar()
+ void MainWindow::configureStatusBar()
 diff --git a/src/ui/qextendediconengine.cpp b/src/ui/qextendediconengine.cpp
 index 1d9039a6c..668dcf002 100644
 --- a/src/ui/qextendediconengine.cpp
@@ -54223,9 +54223,9 @@ index f809c2bfe..7f8eaad54 100644
  #include "include/Extensions/extensionsloader.h"
  #include "include/Sessions/backupservice.h"
 +#include "include/iconprovider.h"
- 
- #include <QDialogButtonBox>
- #include <QFileDialog>
+ #include "include/keygrabber.h"
+ #include "include/mainwindow.h"
+ #include "include/notepadqq.h"
 @@ -68,6 +69,8 @@ frmPreferences::frmPreferences(TopEditorContainer *topEditorContainer, QWidget *
  
      ui->txtNodejs->setText(m_settings.Extensions.getRuntimeNodeJS());
