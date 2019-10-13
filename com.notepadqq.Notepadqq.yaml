@@ -8,6 +8,9 @@ rename-icon: notepadqq
 rename-desktop-file: notepadqq.desktop
 rename-appdata-file: notepadqq.appdata.xml
 copy-icon: true
+desktop-file-name-suffix: ' (Beta)'
+tags:
+  - beta
 finish-args:
   # X11 + XShm access
   - --share=ipc
